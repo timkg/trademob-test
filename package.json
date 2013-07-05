@@ -1,0 +1,12 @@
+{
+	"name": "trademob-test",
+	"author": "Tim Koch-Grünberg tim.theodor@gmail.com",
+	"version": "0.0.1",
+	"scripts": {
+		"test": "./node_modules/.bin/nodeunit ./test/main.coffee"
+	},
+	"dependencies": {
+		"coffee-script": "*",
+		"nodeunit": "*"
+	}
+}
