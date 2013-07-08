@@ -15,7 +15,6 @@ describe 'Campaign service', ->
 
   before (done) ->
     redis.set REDIS_CAMPAIGN_ID, REDIS_COUPON_VALUE
-    mysql.connect()
     mysql.query(
       "INSERT INTO campaigns (campaign_id, coupon_value) VALUES (#{MYSQL_CAMPAIGN_ID}, #{MYSQL_COUPON_VALUE})",
       (err, result) ->

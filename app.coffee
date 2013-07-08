@@ -1,1 +1,2 @@
-console.log('it works on port ' + process.argv[2] + '!')
+server = require('./src/server')
+server.start process.argv[2] || 5000

@@ -3,7 +3,8 @@
   "author": "Tim Koch-Grünberg tim.theodor@gmail.com",
   "version": "0.0.1",
   "scripts": {
-    "test": "mocha --compilers coffee:coffee-script"
+    "test": "mocha --compilers coffee:coffee-script",
+    "start": "coffee ./app.coffee"
   },
   "dependencies": {
     "coffee-script": "*",
@@ -12,6 +13,7 @@
     "mysql@2.0.0-alpha8": "*",
     "redis-url": "*",
     "node-uuid": "~1.4.0",
-    "randomstring": "~1.0.2"
+    "randomstring": "~1.0.2",
+	"express": "*"
   }
 }
