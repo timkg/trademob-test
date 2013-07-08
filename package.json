@@ -2,6 +2,9 @@
   "name": "trademob-test",
   "author": "Tim Koch-Grünberg tim.theodor@gmail.com",
   "version": "0.0.1",
+  "scripts": {
+	"test": "mocha --compilers coffee:coffee-script"
+  },
   "dependencies": {
     "coffee-script": "*",
     "mocha": "*",
