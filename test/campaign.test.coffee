@@ -45,13 +45,14 @@ describe 'Campaign service', ->
       expect(parseInt value, 10).to.equal(MYSQL_COUPON_VALUE)
       done()
 
-#  it 'should save coupon values obtained from mysql into redis', (done) ->
-#    campaignService.getCouponValue MYSQL_CAMPAIGN_ID, (valueFromMysql) ->
-#      campaignService._getCouponValueFromRedis MYSQL_CAMPAIGN_ID, (valueFromRedis) ->
-#        expect(parseInt valueFromMysql, 10).to.equal(parseInt valueFromRedis, 10)
-#        console.log parseInt valueFromMysql, 10
-#        console.log parseInt valueFromRedis, 10
-#        done()
+  it 'should save coupon values obtained from mysql into redis', (done) ->
+    # make sure redis is empty
+    redis.del REDIS_CAMPAIGN_ID
+    redis.del MYSQL_CAMPAIGN_ID
+    campaignService.getCouponValue MYSQL_CAMPAIGN_ID, (valueFromMysql) ->
+      campaignService._getCouponValueFromRedis MYSQL_CAMPAIGN_ID, (valueFromRedis) ->
+        expect(parseInt valueFromMysql, 10).to.equal(parseInt valueFromRedis, 10)
+        done()
 
   after (done) ->
     mysql.query(
