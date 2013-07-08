@@ -1,7 +1,7 @@
 Trademob node.js dev test
 
 To run tests:
-    mocha --compilers coffee:coffee-script
+npm test
 
 Assumptions
 Coupon server accepts requests over HTTP from an internal VPN, all requests are thus to be considered as coming
