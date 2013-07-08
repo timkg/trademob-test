@@ -3,13 +3,15 @@
   "author": "Tim Koch-Grünberg tim.theodor@gmail.com",
   "version": "0.0.1",
   "scripts": {
-	"test": "mocha --compilers coffee:coffee-script"
+    "test": "mocha --compilers coffee:coffee-script"
   },
   "dependencies": {
     "coffee-script": "*",
     "mocha": "*",
     "expect.js": "*",
     "mysql@2.0.0-alpha8": "*",
-    "redis-url": "*"
+    "redis-url": "*",
+    "node-uuid": "~1.4.0",
+    "randomstring": "~1.0.2"
   }
 }
