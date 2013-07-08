@@ -24,5 +24,5 @@ npm start
  - user IP (string)
  - campaign id (int)
 
-** Issue a coupon request via HTTP GET to http://serverhost/coupon, passing **campaign_id** and **user_ip** as query
- string parameters
+** To issue a coupon request:**
+ - HTTP GET to http://serverhost/coupon, passing **campaign_id** and **user_ip** as query string parameters
