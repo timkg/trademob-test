@@ -1,12 +1,23 @@
-Trademob node.js dev test
+# Trademob node.js dev test
 
-To run tests:
+## Dependencies:
+ - mysql
+ - redis
+ - mocha
+
+## Known bugs:
+ - mysql closes connection after +- 10sec and crashes process. Use connection pool?
+
+## To run tests:
 npm test
 
-Assumptions
-Coupon server accepts requests over HTTP from an internal VPN, all requests are thus to be considered as coming
-from a trusted source
+## To run server:
+npm start
 
-The following set of information is provided for each coupon request:
- - user IP
- - campaign id
+## Assumptions:
+Coupon server accepts requests over HTTP from an internal VPN, all requests are thus to be considered as coming
+coming from a trusted source
+
+## The following set of information needs to be provided for each coupon request:
+ - user IP (string)
+ - campaign id (int)
