@@ -15,7 +15,7 @@ class Campaign
           self._saveCouponValueToRedis(campaign_id, result)
           callback null, result
         else
-          callback new Error '2 no coupon_value found for campaign_id ' + campaign_id, null
+          callback new Error 'no coupon_value found for campaign_id ' + campaign_id, null
 
   _getCouponValueFromRedis: (campaign_id, callback) ->
     redis.get campaign_id, (err, result) ->
@@ -30,7 +30,7 @@ class Campaign
       if Array.isArray(result) && result.length > 0 && result[0].coupon_value
         callback null, result[0].coupon_value
       else
-        callback new Error '1 no coupon_value found for campaign_id ' + campaign_id, null
+        callback new Error 'no coupon_value found for campaign_id ' + campaign_id, null
         return false
 
   _saveCouponValueToRedis: (campaign_id, coupon_value) ->
