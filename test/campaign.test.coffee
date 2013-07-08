@@ -1,5 +1,6 @@
 Campaign = require('../services/campaign').Campaign
 mysql = require('../services/mysql').mysql
+redis = require('../services/redis').redis
 expect = require 'expect.js'
 
 CAMPAIGN_ID = 123
@@ -11,13 +12,11 @@ describe 'Campaign service', ->
     mysql.connect()
     mysql.query(
       "INSERT INTO campaigns (campaign_id, coupon_value) VALUES (#{CAMPAIGN_ID}, #{COUPON_VALUE})",
-    (err, result) ->
-      if err then throw err
-      console.log err
-      console.log result
-      done()
-      true
-    )
+      (err, result) ->
+        if err then throw err
+        done()
+        true
+      )
 
   it 'should be defined', ->
     expect(Campaign).to.be.ok()
@@ -26,23 +25,25 @@ describe 'Campaign service', ->
     campaignService = new Campaign
     expect(campaignService).to.be.ok()
 
-  it 'should expose a getCouponValue method', ->
+  it 'should query the mysql server for coupon values', (done) ->
     campaignService = new Campaign
-    expect(campaignService.getCouponValue).to.be.ok()
+    campaignService.getCouponValueFromMySQL CAMPAIGN_ID, (result) ->
+      expect(result).to.equal(COUPON_VALUE)
+      done()
+      true
 
-  it 'should return the coupon value for a given campaign_id', ->
-
-  it 'should query the mysql server for coupon values', ->
-
-  it 'should save new coupon values in redis', ->
+  it 'should save new coupon values in redis', (done) ->
+    campaignService = new Campaign
+    campaignService.saveCouponValueToRedis(CAMPAIGN_ID, COUPON_VALUE)
+    redis.get CAMPAIGN_ID, (err, value) ->
+      expect(parseInt value, 10).to.equal(COUPON_VALUE)
+      done()
 
   after (done) ->
     mysql.query(
       "DELETE FROM campaigns WHERE campaign_id=#{CAMPAIGN_ID}",
       (err, result) ->
         if err then throw err
-        console.log err
-        console.log result
         done()
         true
       )

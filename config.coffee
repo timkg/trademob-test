@@ -7,8 +7,7 @@ readTokenFromFile = (tokenName) ->
     parts = line.split('=')
     if parts[0] == tokenName
       tokenValue = parts[1]
-      return tokenValue
-    else
-      return false
+  tokenValue
 
+exports.REDIS_URL = process.env.REDISTOGO_URL || readTokenFromFile('REDISTOGO_URL')
 exports.MYSQL_URL = process.env.MYSQL_URL || readTokenFromFile('DATABASE_URL')

@@ -1,11 +1,12 @@
 {
-	"name": "trademob-test",
-	"author": "Tim Koch-Grünberg tim.theodor@gmail.com",
-	"version": "0.0.1",
-	"dependencies": {
-		"coffee-script": "*",
-		"mocha": "*",
-		"expect.js": "*",
-		"db-mysql": "*"
-	}
+  "name": "trademob-test",
+  "author": "Tim Koch-Grünberg tim.theodor@gmail.com",
+  "version": "0.0.1",
+  "dependencies": {
+    "coffee-script": "*",
+    "mocha": "*",
+    "expect.js": "*",
+    "mysql@2.0.0-alpha8": "*",
+    "redis-url": "*"
+  }
 }
