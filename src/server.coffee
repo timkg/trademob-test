@@ -16,7 +16,11 @@ exports.init = ->
       res.end 'Coupon creation requires GET request with querystring parameters campaign_id (int) and user_ip (string)'
 
     coupon = new Coupon user_ip, campaign_id
-    coupon.init (coupon) ->
+    coupon.init (err, coupon) ->
+      if err
+        res.statusCode = 500
+        res.end err.message
+        return false
       res.json coupon
 
 exports.start = (port) ->

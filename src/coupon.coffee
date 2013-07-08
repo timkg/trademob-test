@@ -13,9 +13,12 @@ class Coupon
 
   init: (callback) ->
     self = this
-    campaignService.getCouponValue @campaign_id, (coupon_value) ->
+    campaignService.getCouponValue @campaign_id, (err, coupon_value) ->
+      if err
+        callback err, null
+        return false
       self.coupon_value = parseInt coupon_value, 10
-      callback self
+      callback null, self.getJSON()
 
   getJSON: ->
     JSON.stringify this

@@ -29,7 +29,7 @@ describe 'Campaign service', ->
     expect(campaignService).to.be.ok()
 
   it 'should query the mysql server for coupon values', (done) ->
-    campaignService._getCouponValueFromMySQL MYSQL_CAMPAIGN_ID, (result) ->
+    campaignService._getCouponValueFromMySQL MYSQL_CAMPAIGN_ID, (err, result) ->
       expect(result).to.equal(MYSQL_COUPON_VALUE)
       done()
 
@@ -48,7 +48,7 @@ describe 'Campaign service', ->
     # make sure redis is empty
     redis.del REDIS_CAMPAIGN_ID
     redis.del MYSQL_CAMPAIGN_ID
-    campaignService.getCouponValue MYSQL_CAMPAIGN_ID, (valueFromMysql) ->
+    campaignService.getCouponValue MYSQL_CAMPAIGN_ID, (err, valueFromMysql) ->
       campaignService._getCouponValueFromRedis MYSQL_CAMPAIGN_ID, (valueFromRedis) ->
         expect(parseInt valueFromMysql, 10).to.equal(parseInt valueFromRedis, 10)
         done()
