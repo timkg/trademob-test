@@ -23,3 +23,6 @@ npm start
 **The following set of information needs to be provided for each coupon request:**
  - user IP (string)
  - campaign id (int)
+
+** Issue a coupon request via HTTP GET to http://serverhost/coupon, passing **campaign_id** and **user_ip** as query
+ string parameters
