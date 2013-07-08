@@ -18,7 +18,7 @@ class Coupon
         callback err, null
         return false
       self.coupon_value = parseInt coupon_value, 10
-      callback null, self.getJSON()
+      callback null, self
 
   getJSON: ->
     JSON.stringify this
