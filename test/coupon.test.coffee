@@ -39,8 +39,8 @@ describe 'Coupon', ->
 
   it 'should create a 16 char random string for the promo code', ->
     coupon = new Coupon(USER_IP, REDIS_CAMPAIGN_ID)
-    expect(coupon.promoCode).to.be.ok()
-    expect(coupon.promoCode.length).to.equal(16)
+    expect(coupon.promo_code).to.be.ok()
+    expect(coupon.promo_code.length).to.equal(16)
 
   it 'should create a v1 UUID', ->
     coupon = new Coupon(USER_IP, REDIS_CAMPAIGN_ID)

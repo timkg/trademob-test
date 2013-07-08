@@ -9,13 +9,13 @@ class Coupon
     throw new ReferenceError('Coupon constructor requires user_ip') unless @user_ip
     throw new ReferenceError('Coupon constructor requires campaign_id') unless @campaign_id
     @uuid = uuid.v1()
-    @promoCode = randomString.generate 16
+    @promo_code = randomString.generate 16
 
   init: (callback) ->
     self = this
     campaignService.getCouponValue @campaign_id, (coupon_value) ->
       self.coupon_value = parseInt coupon_value, 10
-      callback()
+      callback self
 
   getJSON: ->
     JSON.stringify this
